@@ -1,5 +1,5 @@
 'use strict';
 
-module.exports = function(Motorcylce) {
+module.exports = function(Motorcycle) {
 
 };
