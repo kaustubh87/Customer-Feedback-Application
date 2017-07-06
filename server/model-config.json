@@ -16,5 +16,9 @@
   "motorcylce": {
     "dataSource": null,
     "public": true
+  },
+  "review": {
+    "dataSource": null,
+    "public": true
   }
 }
