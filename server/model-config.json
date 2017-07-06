@@ -12,5 +12,9 @@
       "../common/mixins",
       "./mixins"
     ]
+  },
+  "motorcylce": {
+    "dataSource": null,
+    "public": true
   }
 }
