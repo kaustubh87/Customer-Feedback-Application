@@ -11,7 +11,7 @@ module.exports = function (app) {
     app.models.Motorcycle.create([
       {
         "make": " Harley Davidson",
-        "image": "images/heitage.jpg",
+        "image": "images/heritage.jpg",
         "model": "Heritage Softail",
         "description": "An Evolution V-twin Engine!",
         "category": "Cruiser",
