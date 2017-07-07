@@ -1,0 +1,37 @@
+var Review = React.createClass({
+
+  render: function() {
+    return (
+      <div className= "list-group-item">
+      <small className="text-muted pull-right">
+      {this.props.email}
+      </small>
+      <h4 className="list-group-item-heading">
+      {this.props.name}
+      </h4>
+      <p className= "lit-group-item-text">
+      {this.props.review}
+      </p>
+      </div>
+    );
+  }
+});
+
+var ReviewBox = React.creatClass({
+
+  loadReviewsFromServer: function() {
+
+    $.ajax({
+      url: this.props.api,
+      type: 'GET',
+      dataType: 'json',
+      cache: false,
+      success: function(data){
+        this.setState({data : data });
+      }.bind(this),
+      error: function(xhr, status, err){
+        console.error(this.props.api, status, err.toString());
+      }.bind(this)
+    });
+  }
+});
