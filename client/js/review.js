@@ -89,5 +89,23 @@ var ReviewList = React.createClass({
   }
 });
 
+var ReviewForm = React.creatClass({
+  getInitialState: function(){
+      return {name: '', email: '', review:'', model:''};
+  },
+  handleAuthorChange: function(e){
+    this.setState({name: e.target.value});
+  },
+  handleEmailChange: function(e){
+    this.setState({email: e.target.value});
+  },
+  handleTextChange: function(e){
+    this.setState({review : e.target.value });
+  },
+  handleSubmit: function(e){
+    e.preventDefault();
+  }
+});
+
 
 
