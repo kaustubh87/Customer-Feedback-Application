@@ -73,3 +73,21 @@ var ReviewBox = React.creatClass({
   }
 });
 
+var ReviewList = React.createClass({
+  render: function() {
+    var reviewNodes = this.props.data.map(function(review){
+        return (
+          <Review name={review.name} review = {review.review} email= {review.email} key= {review.id}> </Review>
+        );
+    });
+
+    return (
+        <div className = "list-group">
+          {reviewNodes}
+        </div>
+    );
+  }
+});
+
+
+
