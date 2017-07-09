@@ -33,5 +33,28 @@ var ReviewBox = React.creatClass({
         console.error(this.props.api, status, err.toString());
       }.bind(this)
     });
+  },
+
+  handleReviewSubmit : function(review) {
+    var reviews = this.state.data;
+    review.id = Date.now().toString();
+    var newReviews = reviews.concat([review]);
+    this.setState({data: newReviews});
+    console.log(review);
+    $.ajax({
+      url : this.props.api,
+      dataType: 'json',
+      type: 'POST',
+      data: review,
+      success: function(data){
+        console.log(data);
+      }.bind(this),
+      error: function(xhr, status, err){
+        console.error(this.props.api, status, err.toString());
+      }.bind(this)
+    });
   }
+
+
 });
+
