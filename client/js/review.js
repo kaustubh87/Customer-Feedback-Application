@@ -1,3 +1,4 @@
+(function(){
 var Review = React.createClass({
 
   render: function() {
@@ -104,8 +105,56 @@ var ReviewForm = React.creatClass({
   },
   handleSubmit: function(e){
     e.preventDefault();
+    var name = this.state.name.trim();
+    var email = this.state.email.trim();
+    var review = this.state.review.trim();
+    var model = '57337088fabe969f2dd4078e';
+    if(!review || !name){
+      return ;
+    }
+    this.props.onReviewSubmit({name: name, email: email, model: model , review: review});
+    this.setState({name: '', email: '', review: '', model:''});
+  },
+  render: function(){
+     return (
+       <div>
+         <hr/>
+       <form onSubmit = {this.handleSubmit}>
+          <div className="row">
+              <div className="col-lg-6">
+                <fieldset className="form-group">
+                    <label for="InputName">Name</label>
+                    <input type="review" className="form-control" id="InputName" placeholder = "Name" value= {this.state.name}
+                    onChange = {this.handleAuthorChange}/>
+                </fieldset>
+              </div>
+
+               <div className="col-lg-6">
+                <fieldset className="form-group">
+                    <label for="InputEmail">Email</label>
+                    <input type="review" className="form-control" id="InputEmail" placeholder = "Email" value= {this.state.email}
+                    onChange = {this.handleEmailChange}/>
+                </fieldset>
+              </div>
+          </div>
+            <fieldset className="form-group">
+                    <label for="TextAreaFeedback">Feedback</label>
+                    <textarea className="form-control" id="TextareaFeedback" rows="3" placeholder = "Feedback"
+                    value= {this.state.review} onChange = {this.handleTextChange}/>
+            </fieldset>
+
+            <button type="submit" className="btn btn-primary" value="Post">Submit</button>
+
+          </form>
+          </div>
+     );
   }
 });
+
+ReactDOM.render(
+    <ReviewBox api="/api/reviews" />, document.getElementById('content')
+);
+})();
 
 
 
