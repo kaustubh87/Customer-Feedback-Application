@@ -53,8 +53,23 @@ var ReviewBox = React.creatClass({
         console.error(this.props.api, status, err.toString());
       }.bind(this)
     });
+  },
+
+  getInitialState: function(){
+      return {
+          data: []
+      };
+  },
+  componentDidMount: function(){
+    this.loadReviewsFromServer();
+  },
+  render: function(){
+    return (
+        <div>
+          <ReviewList data={this.state.data} />
+          <ReviewForm onReviewSubmit = {this.handleReviewSubmit} />
+        </div>
+    );
   }
-
-
 });
 
