@@ -1,3 +1,4 @@
+(function(){
 // Create a interface component for motorcycle Item
 
 var Motorcycle = React.createClass({
@@ -52,4 +53,37 @@ var MotorcycleBox = React.createClass({
    this.loadMotorcyclesFromServer();
   },
 
+  render: function(){
+    return (
+        <div>
+            <MotorcycleList data= {this.state.data} />
+        </div>
+    );
+  }
+
 });
+
+
+var MotorcycleList = React.createClass({
+  render: function(){
+    var motorcycleNodes = this.props.data.map(function(motorscyle){
+        console.log(motorcycle);
+        return (
+          <Motorcycle image = {motorcycle.image} make = {motorcycle.make} model={motorcycle.model}
+          description={motorcycle.description} category={motorcycle.category} year={motorcycle.year} key={motorcycle.id}>
+          </Motorcycle>
+        );
+    });
+
+        return (
+          <div className = "motorcycles">
+            {motorcycleNodes}
+          </div>
+        );
+  }
+});
+
+ReactDom.render(
+    <MotorcycleBox api = "/api/motorcycles" />, document.getElementById('motorcycle')
+);
+})();
